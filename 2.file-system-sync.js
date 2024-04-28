@@ -1,6 +1,5 @@
 const fs = require('node:fs') // se recomienda el prefijo node: desde la version 16
 
-
 // De forma sincrona
 
 const contText = fs.readFileSync('./hola.txt', 'utf-8')
