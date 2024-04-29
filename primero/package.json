@@ -1,0 +1,33 @@
+{
+  "name": "uapp",
+  "version": "1.0.0",
+  "description": "university app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wilmer-rodriguez-r/uapp_nodejs.git"
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "Wilmer Rodríguez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wilmer-rodriguez-r/uapp_nodejs/issues"
+  },
+  "homepage": "https://github.com/wilmer-rodriguez-r/uapp_nodejs#readme",
+  "dependencies": {
+    "picocolors": "1.0.0"
+  },
+  "devDependencies": {
+    "standard": "17.1.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "./node_modules/standard/eslintrc.json"
+    ]
+  }
+}

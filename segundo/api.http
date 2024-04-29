@@ -1,0 +1,11 @@
+GET http://localhost:1234/pokemon/ditto
+
+###
+POST http://localhost:1234/pokemon
+Content-Type: application/json
+
+{
+    "name": "yo",
+    "type": "agua",
+    "abilities": ["vaguear", "hacer el que estudia"]
+}
