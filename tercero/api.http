@@ -1,0 +1,38 @@
+GET http://localhost:1234
+
+### Obtener todas las peliculas
+GET http://localhost:1234/movies
+
+### Obtener pelicula por id
+GET http://localhost:1234/movies/dcdd0fad-a94c-4810-8acc-5f108d3b18c3
+
+### Obtener peliculas filtradas por un genero
+GET http://localhost:1234/movies?genre=action
+
+### Obtener peliculas con paginado
+GET http://localhost:1234/movies?limit=2&genre=action
+
+### Crear una pelicula
+POST http://localhost:1234/movies
+Content-Type: application/json
+
+{
+    "sql": "SELECT * FROM users",
+    "title": "The Godfather",
+    "year": 1972,
+    "director": "Francis Ford Coppola",
+    "duration": 177,
+    "poster": "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
+    "genre": [
+      "Action",
+      "Crime",
+      "Drama"
+    ]
+}
+### modificar una pelicula
+PATCH http://localhost:1234/movies/dcdd0fad-a94c-4810-8acc-5f108d3b18c3
+Content-Type: application/json
+
+{
+    "year": "1972"
+}
