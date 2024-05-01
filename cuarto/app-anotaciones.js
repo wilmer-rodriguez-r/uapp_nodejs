@@ -1,13 +1,28 @@
-const express = require('express') // require -> commonJS
-const movies = require('./movies.json')
-const crypto = require('node:crypto')
-const cors = require('cors')
-const { validateMovie, validatePartialMovie } = require('./schemas/schema-movie')
+import express, { json } from 'express'
+import crypto from 'node:crypto'
+import { validateMovie, validatePartialMovie } from './schemas/schema-movie.js'
+import cors from 'cors'
+
+// Leer JSON en ESModules
+
+// NO ES UN ESTANDAR TODAVIA, PUEDE CONTENER FALLOS
+// import movies from './movies.json' with { type: 'json' }
+
+// Primera forma de leer json con ECJS
+// import fs from 'node:fs'
+// const movies = JSON.parse(fs.readFileSync('./movies.json', 'utf-8'))
+
+// Segunda forma de importar JSON
+// Creando tu propio require, usando forma nativa
+// import { createRequire } from 'node:module'
+// const require = createRequire(import.meta.url)
+// const movies = require('./movies.json')
+
+import { readJSON } from './utils.js'
+const movies = readJSON('./movies.json')
 
 // iniciar aplicación
 const app = express()
-const PORT = process.env.PORT ?? 1234
-
 app.disable('x-powered-by')
 
 // ya existe un middleware que se encarga de los CORS, sin embargo este permite todo el trafico por defecto.
@@ -31,7 +46,7 @@ app.use(cors({
 })
 )
 // middleware que permite mutar la petición para adjuntar todo el body
-app.use(express.json())
+app.use(json())
 // metodos "normales": GET/HEAD/POST
 // metodos complejos: PUT/PATCH/DELETE (solicitan de OPTIONS), Preflight
 // app.options('/movies/:id', (req, res) => {
@@ -138,6 +153,8 @@ app.delete('/movies/:id', (req, res) => {
   movies.splice(indexMovie, 1)
   return res.json({ message: 'Movie deleted' })
 })
+
+const PORT = process.env.PORT ?? 1234
 
 app.listen(PORT, () => {
   console.log(`listening on port: http://localhost:${PORT}`)

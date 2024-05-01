@@ -1,4 +1,4 @@
-const z = require('zod')
+import z from 'zod'
 
 // para validar datos de entrada de la api
 const movieSchema = z.object({
@@ -22,15 +22,10 @@ const movieSchema = z.object({
   )
 })
 
-function validatePartialMovie (object) {
+export function validatePartialMovie (object) {
   return movieSchema.partial().safeParse(object)
 }
 
-function validateMovie (object) {
+export function validateMovie (object) {
   return movieSchema.safeParse(object)
 }
-
-module.exports = {
-  validateMovie,
-  validatePartialMovie
-} // commonJS
